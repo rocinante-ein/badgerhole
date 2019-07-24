@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
+  <title>ログイン</title>
+  <link rel="stylesheet" href="/static/stylesheets/rcpkg.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <section class="global-container login-container">
+    <header class="login-header">
+      <div class="login-header__image-container">
+        <img class="login-header__logo-image" src="/static/images/romain_logo_white.svg">
+      </div>
+    </header>
+    <section class="login">
+      <header>
+        <img src="/static/images/toybox_logo.svg">
+        <section class="message-area">{{ .message }}</section>
+      </header>
+      <form name="login" method="post" action="/oauth2/authentication">
+        <section class="login-label"><i class="fa fa-user fa-fw"></i><span>ユーザID または メールアドレス</span></section>
+        <section class="login-value">
+          <input class="rc-textbox" name="email_or_sub" type="text">
+        </section>
+        <section class="login-label"><i class="fa fa-lock fa-fw"></i><span>パスワード</span></section>
+        <section class="login-value">
+          <input class="rc-textbox" name="password" type="password">
+        </section>
+        <section>
+          <button class="login-button" name="login_button" type="submit">ログイン</button>
+        </section>
+        <section>
+          <dev class="login-reminder">
+            <a href="/oauth2/reminder">パスワードを忘れた方はこちら</a>
+          </dev>
+        </section>
+      </form>
+    </section>
+    <footer>
+      <div></div>
+    </header>
+  </footer>
+</body>
+
+</html>

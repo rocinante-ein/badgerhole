@@ -1,0 +1,385 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+input, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  z-index: 0;
+  width: 100%;
+}
+
+.global-container {
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: 100vw;
+  padding-bottom: 20px;
+}
+
+/* ページの共通ヘッダ部 */
+.global-header {
+  /* 固定ヘッダ分マージンをあける */
+  margin-bottom: 40px;
+  /* 慣性スクロールを行う */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ページの共通ボディ部 */
+.global-body {
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+
+/* ページの共通ボディ部 */
+.global-footer {
+  z-index: 0;
+}
+
+/* スマホ向け(-480px)のデザイン */
+/* タブレット向け(480px-960px)のデザイン */
+/* PC向け(960px-)のデザイン */
+/* 最大サイズを超えるPC向け(1280px-)のデザイン */
+/* ==================================================
+  *| rc-formスタイル
+  * ================================================= */
+.rc-form {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.rc-form > .rc-form-title {
+  width: calc(100% - 40px);
+  border-bottom: dotted 5px #800000;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+.rc-form > .rc-form-title > i, .rc-form > .rc-form-title > span {
+  font-size: 150%;
+  font-weight: bold;
+  background: #FFFFFF;
+  color: #800000;
+}
+
+.rc-form > .rc-form-area {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rc-form > .rc-form-area > .rc-form-input {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rc-form > .rc-form-area > .rc-form-input.full {
+  width: 100%;
+}
+
+.rc-form > .rc-form-area > .rc-form-input.half {
+  width: calc(50% - 2px);
+  margin: 0px 1px;
+}
+
+.rc-form > .rc-form-area > .rc-form-input.hidden {
+  display: none;
+}
+
+.rc-form > .rc-form-area > .rc-form-input > .rc-form-field {
+  width: calc(33% - 10px);
+  background: #800000;
+  color: #FFFFFF;
+  border-radius: 10px;
+  padding: 10px 0px 10px 10px;
+  margin: 5px 0px 0px 0px;
+  font-weight: bold;
+}
+
+.rc-form > .rc-form-area > .rc-form-input.text > .rc-form-field {
+  width: calc(100% - 10px);
+}
+
+.rc-form > .rc-form-area > .rc-form-input > .rc-form-value {
+  display: flex;
+  width: calc(67% - 16px);
+  background: #FFFFFF;
+  color: #800000;
+  border-radius: 10px;
+  padding: 8px 0px 8px 10px;
+  border: solid 2px #800000;
+  margin: 5px 0px 0px 2px;
+}
+
+.rc-form > .rc-form-area > .rc-form-input.text > .rc-form-value {
+  margin-left: 0px;
+  width: calc(100% - 16px);
+}
+
+.rc-form > .rc-form-area > .rc-form-button {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.rc-form .rc-form-required {
+  font-weight: bold;
+  color: #FF0000;
+}
+
+/**************************************************************************
+*
+* 各フォームのCSS
+*
+**************************************************************************/
+.rc-datetime {
+  cursor: pointer;
+}
+
+.rc-datetime > .vdatetime-input {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  font-size: 100%;
+  border-radius: 5px;
+  border: solid 0.5px #FFDEAD;
+  padding: 0px 0px 0px 5px;
+  width: calc(95% - 5px);
+  color: #800000;
+}
+
+.rc-datetime .vdatetime-popup__header,
+.rc-datetime .vdatetime-calendar__month__day--selected > span > span,
+.rc-datetime .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: #800000;
+}
+
+.rc-datetime > .vdatetime-year-picker__item--selected,
+.rc-datetime .vdatetime-time-picker__item--selected,
+.rc-datetime .vdatetime-popup__actions__button {
+  color: #800000;
+}
+
+.rc-textbox {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  font-size: 100%;
+  border-radius: 5px;
+  border: solid 0.5px #FFDEAD;
+  padding: 0px 0px 0px 5px;
+  width: calc(95% - 5px);
+  color: #800000;
+}
+
+.rc-textarea {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  font-size: 100%;
+  border-radius: 5px;
+  border: solid 0.5px #FFDEAD;
+  padding: 0px 0px 0px 5px;
+  width: calc(95% - 5px);
+  color: #800000;
+  height: 200px;
+}
+
+.rc-image-preview {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.rc-image-preview {
+  width: 100%;
+}
+
+.rc-image-file {
+  width: calc(100% - 110px);
+  margin-left: 5px;
+}
+
+.rc-button {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  font-size: 100%;
+  border-radius: 5px;
+  padding: 10px 30px;
+  border-style: none;
+  background: #006400;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.rc-button:hover {
+  opacity: 0.5;
+  transition: .2s;
+}
+
+.rc-checkbox {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+}
+
+.rc-checkbox > .rc-checkbox-hidden {
+  display: none;
+}
+
+.rc-checkbox > .rc-checkbox-label {
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 5px;
+  border: 0.5px solid #FFF6E5;
+  transition: .2s;
+}
+
+.rc-checkbox > .rc-checkbox-label:hover {
+  opacity: 0.5;
+}
+
+.rc-checkbox > .rc-checkbox-hidden:checked + .rc-checkbox-label {
+  background-color: #FFDEAD;
+  color: #800000;
+  border-color: #FFDEAD;
+}
+
+.rc-checkbox > .rc-checkbox-hidden:checked + .rc-checkbox-label:hover {
+  opacity: 1;
+}
+
+.rc-selectbox {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  cursor: pointer;
+  outline: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  background: none transparent;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  appearance: button;
+  border-radius: 5px;
+  border: solid 0.5px #FFDEAD;
+}
+
+.rc-selectbox > option {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  background-color: #fff;
+  color: inherit;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.login-header {
+  position: fixed;
+  top: 0px;
+  height: 40px;
+  width: 100vw;
+  background-color: #800000;
+}
+
+.login-header__logo-image {
+  margin-top: 2px;
+  height: 36px;
+}
+
+.login {
+  max-width: 600px;
+  width: 85vw;
+  margin: 50px auto 0px auto;
+  background-color: #FFF6E5;
+  border: 3px solid #FFDEAD;
+  color: #666666;
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+.login > form {
+  width: 100%;
+}
+
+.login-label {
+  width: 100%;
+  padding: 10px 10px 5px 10px;
+}
+
+.login-label > span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-value {
+  margin-left: 2.5%;
+  width: 95%;
+  padding: 0px 10px 10px 10px;
+  font-size: 130%;
+}
+
+.login-button {
+  font-family: 'M PLUS Rounded 1c', "Hiragino Kaku Gothic ProN W6", "メイリオ";
+  font-size: 130%;
+  border-radius: 5px;
+  padding: 10px 30px;
+  border-style: none;
+  background: #800000;
+  color: #FFFFFF;
+  width: 90%;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  opacity: 0.5;
+  transition: .2s;
+}
+
+/* ==================================================
+ *| レスポンシブデザインブレイクポイント
+ *| -479px : スマートフォン縦向け
+ *| 480px- : スマートフォン横向け〜タブレットPC向け
+ *| 960px- : PC向け
+ *| 1280px : max-width
+ * ================================================= */

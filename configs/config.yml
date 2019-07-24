@@ -1,0 +1,28 @@
+---
+
+# default server setting
+
+# badger hole server port
+ServerPort: 8080
+
+# badger hole server name ... http response header servername
+ServerName: Apache/2.2.15 (Unix)
+
+# badger hole template file directory
+TemplateDir: "/opt/badgerhole/web/template/"
+
+# badger hole static file directory
+StaticWebDir: "/opt/badgerhole/web/static/"
+
+# badger hole log output adapter type
+# file      ... file output adapter
+# elastic   ... elasticsearch output adapter
+# postgres  ... PostgreSQL output adapter
+LogOutputAdapterType: file
+
+# badger hole log output adapter connection
+# file      ... log format must use two %s. example /opt/badgerhole/logs/badgerhole_%s_%s.json
+# elastic   ... elasticsearch connection string
+# postgres  ... PostgreSQL connection string
+LogOutputAdapterConnection: /opt/badgerhole/logs/badgerhole_%s_%s.json
+
