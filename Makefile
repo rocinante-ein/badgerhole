@@ -1,3 +1,6 @@
+APPNAME=badgerhole
+APPVERSION=0.1.0
+
 GOCMD=go
 GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
@@ -8,36 +11,43 @@ BUILDWORKDIR=work
 WEBDIR=web
 CONFIGDIR=configs
 LOGDIR=logs
+RELEASEDIR=release
 BINARYDIR=bin
-BINARYNAME=badgerhole
-BINARYUNIX=$(BINARYNAME)_unix
+
 
 all: test clean deps gbuild
 
 gbuild:
-	mkdir -p $(BUILDWORKDIR)/$(BINARYDIR)
-	mkdir -p $(BUILDWORKDIR)/$(LOGDIR)
-	cp -Rp $(WEBDIR) $(BUILDWORKDIR)/
-	cp -Rp $(CONFIGDIR) $(BUILDWORKDIR)/
-	$(GOBUILD) -o $(BUILDWORKDIR)/$(BINARYDIR)/$(BINARYNAME) -v $(SRCDIR)/$(BINARYNAME).go
+	mkdir -p $(BUILDWORKDIR)/$(APPNAME)/$(BINARYDIR)
+	mkdir -p $(BUILDWORKDIR)/$(APPNAME)/$(LOGDIR)
+	cp -Rp $(WEBDIR) $(BUILDWORKDIR)/$(APPNAME)/
+	cp -Rp $(CONFIGDIR) $(BUILDWORKDIR)/$(APPNAME)/
+	$(GOBUILD) -o $(BUILDWORKDIR)/$(APPNAME)/$(BINARYDIR)/$(APPNAME) -v $(SRCDIR)/$(APPNAME).go
 
 test:
 	$(GOTEST) -v ./...
 
 clean:
 	$(GOCLEAN)
-	rm -rf $(BUILDWORKDIR)/$(BINARYDIR)
-	rm -rf $(BUILDWORKDIR)/$(LOGDIR)
-	rm -rf $(BUILDWORKDIR)/$(WEBDIR)
-	rm -rf $(BUILDWORKDIR)/$(CONFIGDIR)
+	rm -rf $(BUILDWORKDIR)/*
 
 run: gbuild
-	./$(BUILDWORKDIR)/$(BINARYDIR)/$(BINARYNAME)
+	./$(BUILDWORKDIR)/$(APPNAME)/$(BINARYDIR)/$(APPNAME)
 
 deps:
 	$(GOGET) github.com/google/uuid
 	$(GOGET) github.com/spf13/pflag
 	$(GOGET) github.com/spf13/viper
+
+# make install ... badgerhole admin install server
+install: clean deps gbuild
+	mkdir -p /opt/$(APPNAME)
+	cp -Rp $(BUILDWORKDIR)/$(APPNAME) /opt/$(APPNAME)/
+
+# release source files
+release-src: clean deps gbuild
+	rm -f $(RELEASEDIR)/$(APPNAME)-$(APPVERSION).tar.gz
+	tar -zcvf $(RELEASEDIR)/$(APPNAME)-$(APPVERSION).tar.gz -C $(BUILDWORKDIR)/ .
 
 # cross compile
 build-linux:

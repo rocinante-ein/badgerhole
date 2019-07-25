@@ -1,0 +1,19 @@
+[Unit]
+Description = Badger Hole is Simple HTTP Honey Pot
+
+[Service]
+# Service Start Command
+ExecStart = /opt/badgerhole/bin/badgerhole
+
+# Service Stop Command
+ExecStop = /bin/kill -HUP $MAINPID    
+
+# Sercvice Reload Command
+ExecReload = /bin/kill -HUP $MAINPID && /opt/badgerhole/bin/badgerhole
+
+# if process is dead ... always restart process
+Restart = always
+
+[Install]
+# multi user taget mode ... over than init3
+WantedBy = multi-user.target

@@ -12,7 +12,7 @@ ServerName: Apache/2.2.15 (Unix)
 TemplateDir: "/opt/badgerhole/web/template/"
 
 # badger hole static file directory
-StaticWebDir: "/opt/badgerhole/web/static/"
+StaticWebDir: "/opt/badgerhole/web/"
 
 # badger hole log output adapter type
 # file      ... file output adapter
